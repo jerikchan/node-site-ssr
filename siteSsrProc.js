@@ -15,6 +15,19 @@ const Errno = require('@fk/Errno');
 // def
 const SiteSsrDef = require('./siteSsrDef');
 
+const getTplName = (tplVer) => {
+  return tplVer ? `-${tplVer}` : '';
+};
+const getAppCreator = (data) => {
+  if (process.env.NODE_ENV === 'debug') {
+    return require('./template/module.server.example.js');
+  }
+  if (data.basepath) {
+      return require(path.join(data.basepath, `dist/module.server${getTplName(data.tplVer)}.src.js`))
+  }
+  return require(`./module.server${getTplName(data.tplVer)}.min.js`);
+}
+
 // 业务运行的方法
 async function renderModule(body, header) {
   // recv
@@ -32,8 +45,7 @@ async function renderModule(body, header) {
   const data = JSON.parse(argsRef.value);
 
   // get create app function
-  // const createApp = data.basepath ? require(path.join(data.basepath, 'dist/module.server.src.js')) : require('./module.server.min.js');
-  const createApp = require('./module.server.src.js');
+  const createApp = getAppCreator(data);
 
   // server side render
   const service = new VueSsrService({

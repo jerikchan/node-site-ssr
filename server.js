@@ -4,8 +4,6 @@ const { RpcServer } = require('@fk/rpc-node').server;
 const logger = console;
 const siteSsrProc = require('./siteSsrProc');
 
-const serverSignature = 'fai.svr.siteSsrSvr';
-
 // 创建 RPC Server 实例
 const server = new RpcServer({
   logger,
@@ -13,7 +11,7 @@ const server = new RpcServer({
 });
 
 // 添加服务
-server.addService(serverSignature, siteSsrProc);
+server.addService('fai.svr.siteSsrSvr:1.0', siteSsrProc);
 
 // 启动 Server
 server.start();

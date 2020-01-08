@@ -3,15 +3,21 @@
   "version": "1.0.0",
   "description": "建站 site 项目服务端渲染服务",
   "main": "server.js",
+  "scripts": {
+    "debug": "cross-env NODE_ENV=debug node server.js"
+  },
   "dependencies": {
     "@fk/Errno": "^1.0.0",
     "@fk/FaiBuffer": "^1.0.5",
     "@fk/genChksum": "^1.0.0",
-    "@fk/rpc-node": "^0.2.2",
+    "@fk/rpc-node": "^1.0.1",
     "@fk/vue-ssr-service": "^1.0.0",
     "assert": "^2.0.0",
     "sdk-base": "^3.6.0",
     "vue": "^2.3.0",
     "vue-server-renderer": "^2.3.0"
+  },
+  "devDependencies": {
+    "cross-env": "^6.0.3"
   }
 }
