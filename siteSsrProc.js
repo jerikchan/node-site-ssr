@@ -17,24 +17,23 @@ const SiteSsrDef = require('./siteSsrDef');
 
 // 业务运行的方法
 async function renderModule(body, header) {
-  console.time('service invoke');
-
   // recv
   const recvBody = new FaiBuffer(body);
   let rt = Errno.ERROR;
   let bufKeyRef = {};
-  const argRef = {};
-  rt = recvBody.getString(bufKeyRef, argRef);
+  const argsRef = {};
+  rt = recvBody.getString(bufKeyRef, argsRef);
   if (rt != Errno.OK || bufKeyRef.value != SiteSsrDef.Protocol.Key.ARGS) {
     rt = Errno.ARGS_ERROR;
-    throw(rt, 'arg=null;flow=%d;', header.flow);
+    throw new Error('args=null;flow=%d;rt=%d', header.flow, rt);
   }
 
   // json parse
-  const data = JSON.parse(argRef.value);
+  const data = JSON.parse(argsRef.value);
 
   // get create app function
-  const createApp = data.basepath ? require(path.join(data.basepath, 'dist/module.server.src.js')) : require('./module.server.min.js');
+  // const createApp = data.basepath ? require(path.join(data.basepath, 'dist/module.server.src.js')) : require('./module.server.min.js');
+  const createApp = require('./module.server.src.js');
 
   // server side render
   const service = new VueSsrService({
@@ -48,10 +47,9 @@ async function renderModule(body, header) {
   const sendBody = new FaiBuffer();
   rt = sendBody.putString(SiteSsrDef.Protocol.Key.MODULE_HTML, moduleHtml);
   if (rt != Errno.OK) {
-    throw(rt, 'module html codec error;flow=%d', header.flow);
+    throw new Error('module html codec error;flow=%d;rt=%d', header.flow, rt);
   }
 
-  console.timeEnd('service invoke');
   return sendBody;
 }
 
