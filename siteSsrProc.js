@@ -19,7 +19,7 @@ const getTplName = (tplVer) => {
   return tplVer ? `-${tplVer}` : '';
 };
 const getAppCreator = (data) => {
-  if (process.env.NODE_ENV === 'debug') {
+  if (process.env.NODE_ENV === 'fai_debug') {
     return require('./template/module.server.example.js');
   }
   if (data.basepath) {

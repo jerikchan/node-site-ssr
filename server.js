@@ -11,7 +11,7 @@ const server = new RpcServer({
 });
 
 // 添加服务
-server.addService('fai.svr.siteSsrSvr:1.0', siteSsrProc);
+server.addService({ interfaceName: 'fai.node.siteSsr', version: '1.0' }, siteSsrProc);
 
 // 启动 Server
 server.start();
