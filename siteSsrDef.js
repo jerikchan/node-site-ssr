@@ -1,11 +1,12 @@
 module.exports = {
   Protocol: {
     Cmd: {
-      SITE_RENDER: 11
+      RENDER_MODULE: 11,
+      RENDER_CSS: 12
     },
     Key: {
-      ARGS: 0,
-      MODULE_HTML: 1
+      INFO: 0,
+      ARGS: 1
     }
   }
 }
