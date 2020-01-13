@@ -60,7 +60,6 @@ const getModuleHtml = async (args) => {
 // 渲染模块
 const renderModule = async (body, header) => {
   let rt = Errno.ERROR;
-
   // recv
   const recvBody = new FaiBuffer(body);
   let keyRef = {};
@@ -73,11 +72,17 @@ const renderModule = async (body, header) => {
   }
 
   // invoke
-  const html = await getModuleHtml.apply(null, [ argsRef.value ]);
+  let info;
+  try {
+    const html = await getModuleHtml.apply(null, [ argsRef.value ]);
+    info = html;
+  } catch (err) {
+    info = err;
+  }
 
   // send
   const sendBody = new FaiBuffer();
-  rt = sendBody.putString(SiteSsrDef.Protocol.Key.INFO, html);
+  rt = sendBody.putString(SiteSsrDef.Protocol.Key.INFO, info);
   if (rt != Errno.OK) {
     throw new Error('html codec error;flow=%d;rt=%d', header.flow, rt);
   }
