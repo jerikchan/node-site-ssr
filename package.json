@@ -1,26 +1,25 @@
 {
   "private": true,
-  "version": "1.0.0",
-  "description": "建站 site 项目服务端渲染服务",
+  "name": "node-site-ssr",
+  "version": "1.0.7",
   "main": "server.js",
+  "description": "建站 Site 项目服务端渲染服务",
   "scripts": {
-    "link": "fnpm link @fk/Errno @fk/FaiBuffer @fk/genChksum @fk/rpc-node @fk/vue-ssr-service",
-    "start": "cross-env FAI_ENV=debug nodemon server.js"
+    "debug": "cross-env DEBUG=@jsnetkit* FAI_ENV=debug node server.js",
+    "start": "node server.js",
+    "start:debug": "cross-env FAI_ENV=debug node server.js",
+    "start:pm2": "pm2 start"
   },
   "dependencies": {
-    "@fk/Errno": "^1.0.0",
-    "@fk/FaiBuffer": "^1.0.5",
-    "@fk/genChksum": "^1.0.0",
-    "@fk/rpc-node": "^1.0.1",
-    "@fk/vue-ssr-service": "^1.0.0",
-    "assert": "^2.0.0",
-    "log4js": "^6.1.0",
-    "sdk-base": "^3.6.0",
+    "@jsnetkit/buffer": "^1.0.6",
+    "@jsnetkit/errno": "^1.0.4",
+    "@jsnetkit/logger": "^1.0.6",
+    "@jsnetkit/rpc": "^1.0.7",
+    "@jsnetkit/vue-renderer": "^1.0.6",
     "vue": "2.3.0",
     "vue-server-renderer": "2.3.0"
   },
   "devDependencies": {
-    "cross-env": "^6.0.3",
-    "nodemon": "^2.0.2"
+    "cross-env": "^6.0.3"
   }
 }
