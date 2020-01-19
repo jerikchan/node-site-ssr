@@ -5,6 +5,7 @@
   "main": "server.js",
   "description": "建站 Site 项目服务端渲染服务",
   "scripts": {
+    "reinstall": "git pull && rm -rf node_modules package-lock.json && fnpm i",
     "debug": "cross-env DEBUG=@jsnetkit* FAI_ENV=debug node server.js",
     "start": "node server.js",
     "start:debug": "cross-env FAI_ENV=debug node server.js",
@@ -15,9 +16,9 @@
     "@jsnetkit/errno": "^1.0.4",
     "@jsnetkit/logger": "^1.0.6",
     "@jsnetkit/rpc": "^1.0.7",
-    "@jsnetkit/vue-renderer": "^1.0.6",
-    "vue": "2.3.0",
-    "vue-server-renderer": "2.3.0"
+    "@jsnetkit/vue-renderer": "^1.0.7",
+    "vue": "^2.3.0",
+    "vue-server-renderer": "^2.3.0"
   },
   "devDependencies": {
     "cross-env": "^6.0.3"
