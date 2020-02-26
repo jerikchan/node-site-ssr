@@ -1,0 +1,11 @@
+dev:
+  stage: deploy
+  only:
+    - master
+  script:
+    - ssh faier@dev3.faidev.cc -p 50805 << sshdep
+    - cd ~/node/node-site-ssr
+    - git pull
+    - npm i
+    - pm2 start ~/etc/node/node-site-ssr
+    - sshdep

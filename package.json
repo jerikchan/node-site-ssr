@@ -1,15 +1,14 @@
 {
   "private": true,
   "name": "node-site-ssr",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "main": "server.js",
   "description": "建站 Site 项目服务端渲染服务",
   "scripts": {
-    "reinstall": "git pull && rm -rf node_modules package-lock.json && fnpm i",
+    "preinstall": "rm -rf node_modules",
     "debug": "cross-env DEBUG=@jsnetkit* FAI_ENV=debug node server.js",
-    "start": "node server.js",
-    "start:debug": "cross-env FAI_ENV=debug node server.js",
-    "start:pm2": "pm2 start"
+    "dev": "cross-env FAI_ENV=debug node server.js",
+    "start": "node server.js"
   },
   "dependencies": {
     "@jsnetkit/buffer": "^1.0.6",
