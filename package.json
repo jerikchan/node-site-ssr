@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "node-site-ssr",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "main": "server.js",
   "description": "建站 Site 项目服务端渲染服务",
   "scripts": {
@@ -16,8 +16,8 @@
     "@jsnetkit/logger": "^1.0.6",
     "@jsnetkit/rpc": "^1.0.7",
     "@jsnetkit/vue-renderer": "^1.0.7",
-    "vue": "^2.3.0",
-    "vue-server-renderer": "^2.3.0"
+    "vue": "2.6.10",
+    "vue-server-renderer": "2.6.10"
   },
   "devDependencies": {
     "cross-env": "^6.0.3"
