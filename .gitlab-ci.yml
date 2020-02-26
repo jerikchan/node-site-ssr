@@ -7,5 +7,5 @@ dev:
     - cd ~/node/node-site-ssr
     - git pull
     - npm i
-    - pm2 start ~/etc/node/node-site-ssr
+    - pm2 start ~/etc/node/node-site-ssr.json
     - sshdep
