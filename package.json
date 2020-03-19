@@ -16,6 +16,9 @@
     "@jsnetkit/logger": "^1.0.6",
     "@jsnetkit/rpc": "^1.0.7",
     "@jsnetkit/vue-renderer": "^1.0.7",
+    "fs-extra": "^8.1.0",
+    "md5": "^2.2.1",
+    "pump": "^3.0.0",
     "vue": "2.6.10",
     "vue-server-renderer": "2.6.10"
   },
